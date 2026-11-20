@@ -206,16 +206,14 @@ $('btnLogout').onclick = async () => { await api('/api/logout', 'POST'); say('�
 $('btnProbe').onclick = async () => {
   const n = encodeURIComponent($('other').value.trim()); const out = [];
   const count = async () => (await api('/api/private')).items.length;
-  const hit = async (u) => { const r = await fetch(u); out.push('GET ' + u + '
-  → ' + r.status + ' ' + (await r.text()).slice(0, 160)); };
+  const hit = async (u) => { const r = await fetch(u); out.push('GET ' + u + ' → ' + r.status + ' ' + (await r.text()).slice(0, 160)); };
   try {
     out.push('요청 전 내 자료 건수: ' + await count());
     await hit('/api/users/' + n + '/private');
     await hit('/api/private?account=' + n + '&owner=' + n);
     out.push('요청 후 내 자료 건수: ' + await count());
   } catch (e) { out.push('오류: ' + e.message); }
-  $('probe').textContent = out.join('
-');
+  $('probe').textContent = out.join(String.fromCharCode(10));
 };
 refresh();
 </script>
