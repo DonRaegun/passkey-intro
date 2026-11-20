@@ -3,144 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>공해성 · 소개</title>
+<title>공해성 · 소개와 작업물</title>
+<meta name="description" content="SKT K-뉴딜 아카데미 ALEPH 대전 D반 공해성의 소개 페이지. 직접 만든 작업물과 배우는 것을 모았습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;800&display=swap">
 <style>
   :root {
-    --bg: #0f172a;
-    --card: #1e293b;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --accent: #38bdf8;
+    --paper: #f6f2ea; --ink: #1d1b18; --muted: #6b655b; --line: #ddd5c6;
+    --card: #fffdf8; --accent: #c2410c; --accent-soft: #fbe3d3;
+    --night: #17140f; --night-card: #231e16; --amber: #f5b042;
+    --serif: "Noto Serif KR", "Batang", serif;
+    --sans: "Noto Sans KR", -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    padding: 2rem 1rem;
-  }
-  .wrap { max-width: 720px; margin: 0 auto; }
-  header { margin-bottom: 2.5rem; }
-  .badge {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: var(--accent);
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    padding: 0.2rem 0.7rem;
-    margin-bottom: 1rem;
-  }
-  h1 { font-size: 1.9rem; margin-bottom: 0.6rem; }
-  .purpose { color: var(--muted); font-size: 1rem; }
-  section {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 1.4rem 1.5rem;
-    margin-bottom: 1.2rem;
-  }
-  h2 {
-    font-size: 1.05rem;
-    color: var(--accent);
-    margin-bottom: 0.8rem;
-    font-weight: 600;
-  }
-  ul { list-style: none; }
-  li { padding: 0.35rem 0; }
-  li::before { content: "· "; color: var(--accent); }
-  .muted { color: var(--muted); font-size: 0.9rem; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover, a:focus { text-decoration: underline; }
-  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 2rem; }
-  .divider { margin: 2.5rem 0 1.2rem; text-align: center; color: var(--muted); font-size: .85rem; }
-  .divider.private { border-top: 3px dashed #f59e0b; padding-top: 1rem; color: #f59e0b; font-weight: 700; }
-  .zone-private section { background: #2a2216; border: 1px solid #f59e0b55; }
-  .zone-private h2 { color: #f59e0b; }
-  button { font: inherit; background: var(--accent); color: #0f172a; border: 0; border-radius: 8px; padding: .45rem .9rem; cursor: pointer; margin: .2rem .3rem .2rem 0; }
-  button.ghost { background: transparent; color: var(--text); border: 1px solid var(--muted); }
-  input { font: inherit; padding: .4rem .6rem; border-radius: 8px; border: 1px solid var(--muted); background: #0f172a; color: var(--text); }
-  #msg { margin: .8rem 0; min-height: 1.4rem; color: #fbbf24; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.75; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* 상단 바 */
+  nav { position: sticky; top: 0; z-index: 5; background: #f6f2eaee; backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 3.4rem; }
+  nav b { font-family: var(--serif); font-size: 1.05rem; }
+  nav ul { display: flex; gap: 1.2rem; list-style: none; font-size: .9rem; }
+  nav a { color: var(--ink); text-decoration: none; }
+  nav a:hover { color: var(--accent); }
+  nav .lock { color: var(--accent); font-weight: 700; }
+
+  /* 히어로 */
+  .hero { padding: 4.5rem 0 3.5rem; }
+  .eyebrow { display: inline-block; font-size: .82rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); padding: .25rem .8rem; border-radius: 999px; }
+  h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(2.4rem, 7vw, 4rem); line-height: 1.2; margin: 1.2rem 0 1rem; letter-spacing: -.02em; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lead { font-size: 1.12rem; max-width: 36rem; color: #3a352d; }
+  .purpose { margin-top: 1rem; font-size: .92rem; color: var(--muted); }
+  .stats { display: flex; flex-wrap: wrap; gap: 2.2rem; margin-top: 2.4rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
+  .stats div b { display: block; font-family: var(--serif); font-size: 2rem; line-height: 1.1; }
+  .stats div span { font-size: .85rem; color: var(--muted); }
+
+  section.block { padding: 3rem 0; border-top: 1px solid var(--line); }
+  h2 { font-family: var(--serif); font-size: 1.6rem; margin-bottom: .4rem; }
+  .sub { color: var(--muted); margin-bottom: 1.6rem; }
+
+  /* 작업물 카드 */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.3rem; display: flex; flex-direction: column; gap: .5rem; transition: transform .15s, box-shadow .15s; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px #0000001a; }
+  .card .no { font-family: var(--serif); color: var(--accent); font-size: .9rem; }
+  .card h3 { font-size: 1.1rem; }
+  .card p { font-size: .93rem; color: #4a443a; flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .3rem; }
+  .tags span { font-size: .74rem; border: 1px solid var(--line); border-radius: 6px; padding: 0 .5rem; color: var(--muted); }
+  .card.feature { grid-column: 1 / -1; background: var(--ink); color: #f6f2ea; border: 0; }
+  .card.feature p, .card.feature .no { color: #e9dfcf; }
+  .card.feature .tags span { border-color: #6b655b; color: #cfc4b0; }
+
+  /* 배우는 것 / 정보 */
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.3rem 1.4rem; }
+  .panel h3 { font-size: 1rem; margin-bottom: .6rem; }
+  .panel ul { list-style: none; }
+  .panel li { padding: .25rem 0 .25rem 1.1rem; position: relative; font-size: .95rem; }
+  .panel li::before { content: ""; position: absolute; left: 0; top: .85rem; width: .45rem; height: .45rem; border-radius: 50%; background: var(--accent); }
+  .panel.no li::before { background: var(--muted); }
+
+  /* 공개/비공개 경계 */
+  .boundary { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 0; margin-top: 1rem; }
+  .boundary::before, .boundary::after { content: ""; flex: 1; border-top: 2px dashed var(--accent); }
+  .boundary span { font-weight: 700; color: var(--accent); font-size: .9rem; white-space: nowrap; }
+  .public-end { text-align: center; color: var(--muted); font-size: .85rem; padding-top: 2rem; }
+
+  .private-zone { background: var(--night); color: #f1e9d8; padding: 3rem 0 4rem; margin-top: 0; border-top: 6px solid var(--amber); }
+  .private-zone h2 { color: var(--amber); }
+  .private-zone .sub { color: #b9ad97; }
+  .private-zone .panel { background: var(--night-card); border-color: #3a3125; }
+  .private-zone .panel li::before { background: var(--amber); }
+  .private-zone .panel h3 { color: var(--amber); }
+  .badge-lock { display: inline-block; background: var(--amber); color: #17140f; font-weight: 700; font-size: .8rem; padding: .2rem .7rem; border-radius: 999px; margin-bottom: .8rem; }
+  button { font: inherit; font-weight: 500; background: var(--amber); color: #17140f; border: 0; border-radius: 8px; padding: .5rem 1rem; cursor: pointer; margin: .25rem .4rem .25rem 0; }
+  button:hover { filter: brightness(1.08); }
+  button.ghost { background: transparent; color: #f1e9d8; border: 1px solid #6b5f4a; }
+  input { font: inherit; padding: .45rem .7rem; border-radius: 8px; border: 1px solid #6b5f4a; background: #120f0a; color: #f1e9d8; margin: .25rem .4rem .25rem 0; max-width: 100%; }
+  label { font-size: .9rem; color: #b9ad97; }
+  #msg { margin: .4rem 0 1rem; min-height: 1.5rem; color: var(--amber); font-weight: 500; }
+  .private-zone .muted { color: #9d917c; font-size: .88rem; }
+  .private-zone .stack > * + * { margin-top: 1rem; }
+
+  footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 2rem 1rem 3rem; }
+  @media (max-width: 560px) { nav ul { gap: .8rem; font-size: .8rem; } .hero { padding-top: 3rem; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <span class="badge">SKT K-뉴딜 아카데미 · ALEPH 대전 D반</span>
-    <h1>공해성</h1>
-    <p class="purpose">
-      이 페이지는 <strong>채용 담당자와 강사</strong>에게 저의 학습 여정과 기술 스택을 소개하기 위한 페이지입니다.
-    </p>
+<nav>
+  <div class="wrap">
+    <b>공해성</b>
+    <ul>
+      <li><a href="#works">작업물</a></li>
+      <li><a href="#learning">배우는 것</a></li>
+      <li><a href="#info">정보</a></li>
+      <li><a href="#private" class="lock">🔒 비공개</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===================== 공개 영역 ===================== -->
+<main id="public">
+  <header class="hero wrap">
+    <span class="eyebrow">SKT K-뉴딜 아카데미 · ALEPH 대전 D반</span>
+    <h1>AI와 함께,<br><em>실제로 동작하는 것</em>을<br>만드는 사람 공해성</h1>
+    <p class="lead">500시간 과정으로 진행되는 SKT K-뉴딜 아카데미 ALEPH 대전 D반에서 개발을 배우고 있습니다. 매일 조금씩 성장하며, AI를 활용해 실제로 동작하는 결과물을 만드는 것을 목표로 합니다.</p>
+    <p class="purpose">이 페이지는 <strong>채용 담당자와 강사</strong>에게 저의 학습 여정과 기술 스택을 소개하기 위한 페이지입니다.</p>
+    <div class="stats">
+      <div><b>31</b><span>가계부 릴리스 (10일간)</span></div>
+      <div><b>56</b><span>가계부 자동 테스트 통과</span></div>
+      <div><b>6</b><span>직접 만든 작업물</span></div>
+    </div>
   </header>
 
-  <section>
-    <h2>소개</h2>
-    <p>
-      500시간 과정으로 진행되는 SKT K-뉴딜 아카데미 ALEPH 대전 D반에서 개발을 배우고 있습니다.
-      매일 조금씩 성장하며, AI를 활용해 실제로 동작하는 결과물을 만드는 것을 목표로 합니다.
-    </p>
+  <section class="block" id="works">
+    <div class="wrap">
+      <h2>작업물</h2>
+      <p class="sub">구현 초안은 AI와 함께 만들고, 요구 분석·설계 결정·결과 검증은 제가 맡았습니다.</p>
+      <div class="grid">
+        <article class="card feature">
+          <span class="no">대표작</span>
+          <h3>가계부 — 웹 · 안드로이드 앱</h3>
+          <p>광고 없이 내 폰 안에서만 쓰는 단순한 개인 가계부. 서버도 로그인도 없이 기기 브라우저 저장소에만 저장합니다. 지인이 실제로 쓰며 준 피드백을 반영해 10일간 31번 릴리스했고, 버전마다 문제·선택지·선택 이유를 기록했습니다.</p>
+          <div class="tags"><span>JavaScript</span><span>Capacitor</span><span>Android</span><span>자동 테스트</span></div>
+          <a href="https://github.com/DonRaegun/household-ledger" target="_blank" rel="noopener" style="color:#f5b042">GitHub 저장소 보기 →</a>
+        </article>
+        <article class="card">
+          <span class="no">02</span><h3>JARVIS — 로컬 한국어 PC 비서</h3>
+          <p>말로 PC를 다루는 비서. AI 모델이 없어도 기본 명령이 동작하고, 기본값으로는 모든 처리가 내 PC 안에서 이뤄집니다.</p>
+          <div class="tags"><span>Python</span><span>로컬 우선</span><span>음성 명령</span></div>
+        </article>
+        <article class="card">
+          <span class="no">03</span><h3>Plan · Do · See 다이어리</h3>
+          <p>계획 → 실제로 한 일 → 돌아보기를 잇는 다이어리. 가입·로그인한 사람만 자기 자료를 보도록 서버 세션과 scrypt 해시로 만들었습니다.</p>
+          <div class="tags"><span>Node.js</span><span>PostgreSQL</span><span>세션 인증</span></div>
+        </article>
+        <article class="card">
+          <span class="no">04</span><h3>날씨 보드</h3>
+          <p>오늘의 날씨를 한 화면에 모아 보는 보드. 데이터 변환 로직을 따로 떼어 테스트 페이지로 검증했습니다.</p>
+          <div class="tags"><span>HTML/CSS</span><span>JavaScript</span><span>테스트 페이지</span></div>
+        </article>
+        <article class="card">
+          <span class="no">05</span><h3>로얄 카지노 웹 게임</h3>
+          <p>블랙잭·홀덤·룰렛이 들어 있는 웹 게임. 설치형 웹앱(PWA)으로 만들어 오프라인에서도 열립니다.</p>
+          <div class="tags"><span>PWA</span><span>Tailwind</span><span>JavaScript</span></div>
+        </article>
+        <article class="card">
+          <span class="no">06</span><h3>패스키 인증을 붙인 이 페이지</h3>
+          <p>이 소개 페이지 자체가 작업물입니다. 아래 비공개 영역은 비밀번호 없이 WebAuthn 패스키로만 열립니다. 서버에는 공개키만 저장합니다.</p>
+          <div class="tags"><span>WebAuthn</span><span>Express</span><span>PostgreSQL</span></div>
+          <a href="https://github.com/DonRaegun/passkey-intro" target="_blank" rel="noopener">소스 보기 →</a>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>배우고 있는 것</h2>
-    <ul>
-      <li>HTML · CSS 기초와 정적 페이지 배포 (GitHub Pages)</li>
-      <li>Git / GitHub 협업 흐름 (commit, push, PR)</li>
-      <li>AI(LLM)를 활용한 코드 생성과 검증</li>
-    </ul>
+  <section class="block" id="learning">
+    <div class="wrap">
+      <h2>배우고 있는 것</h2>
+      <p class="sub">과정에서 익히는 것과 작업하며 몸에 붙인 습관입니다.</p>
+      <div class="cols">
+        <div class="panel"><h3>과정에서 배우는 것</h3><ul>
+          <li>HTML · CSS 기초와 정적 페이지 배포 (GitHub Pages)</li>
+          <li>Git / GitHub 협업 흐름 (commit, push, PR)</li>
+          <li>AI(LLM)를 활용한 코드 생성과 검증</li>
+        </ul></div>
+        <div class="panel"><h3>작업하며 붙인 습관</h3><ul>
+          <li>AI가 만든 결과를 그대로 믿지 않고 직접 확인하기</li>
+          <li>바꾼 이유와 선택지를 기록으로 남기기</li>
+          <li>테스트로 “됐다”를 숫자로 보여 주기</li>
+        </ul></div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>공개하는 정보</h2>
-    <ul>
-      <li>이름: 공해성</li>
-      <li>소속: SKT K-뉴딜 아카데미 ALEPH 대전 D반</li>
-      <li>연락: <a href="mailto:gong92074@gmail.com">gong92074@gmail.com</a></li>
-    </ul>
+  <section class="block" id="info">
+    <div class="wrap">
+      <h2>정보</h2>
+      <p class="sub">공개하는 것과 공개하지 않는 것을 나눠 적었습니다.</p>
+      <div class="cols">
+        <div class="panel"><h3>공개하는 정보</h3><ul>
+          <li>이름: 공해성</li>
+          <li>소속: SKT K-뉴딜 아카데미 ALEPH 대전 D반</li>
+          <li>연락: <a href="mailto:gong92074@gmail.com">gong92074@gmail.com</a></li>
+        </ul></div>
+        <div class="panel no"><h3>공개하지 않는 정보</h3><ul>
+          <li>집 주소 등 상세 거주지 정보</li>
+          <li>신분증·주민등록번호 등 개인 식별 번호</li>
+          <li>비밀번호·API 키 등 비밀값</li>
+        </ul></div>
+        <div class="panel"><h3>링크</h3><ul>
+          <li>GitHub: <a href="https://github.com/DonRaegun" target="_blank" rel="noopener">github.com/DonRaegun</a></li>
+        </ul></div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>공개하지 않는 정보</h2>
-    <ul>
-      <li>집 주소 등 상세 거주지 정보</li>
-      <li>신분증·주민등록번호 등 개인 식별 번호</li>
-      <li>비밀번호·API 키 등 비밀값</li>
-    </ul>
-  </section>
+  <p class="public-end">▲ 여기까지 공개 영역 — 누구나 볼 수 있습니다</p>
+</main>
 
-  <section>
-    <h2>링크</h2>
-    <ul>
-      <li>GitHub: <a href="https://github.com/gsg920" target="_blank" rel="noopener">github.com/gsg920</a></li>
-    </ul>
-  </section>
+<div class="wrap"><div class="boundary"><span>🔒 여기부터 비공개 영역 — 패스키로 로그인해야 보입니다</span></div></div>
 
-  <div class="divider">▲ 여기까지 공개 영역 — 누구나 볼 수 있습니다</div>
-  <div class="divider private">▼ 여기부터 비공개 영역 — 패스키로 로그인해야 보입니다</div>
-  <div class="zone-private">
+<!-- ===================== 비공개 영역 ===================== -->
+<div class="private-zone" id="private">
+  <div class="wrap stack">
+    <span class="badge-lock">PRIVATE · 패스키 필요</span>
+    <h2>비공개 영역</h2>
+    <p class="sub">프로젝트 메모, 지원 목록, 회고처럼 본인만 보는 자료입니다. 비밀번호는 쓰지 않습니다.</p>
     <p id="msg" role="status"></p>
-    <section id="guest">
-      <h2>패스키로 들어가기</h2>
-      <p class="muted">비밀번호는 쓰지 않습니다. 기기(또는 보안 키)가 서명으로 본인을 확인합니다.</p>
-      <p style="margin-top:.6rem"><button id="btnLogin">패스키로 로그인</button></p>
-      <p style="margin-top:.6rem"><label>새 계정 이름 <input id="username" maxlength="20" placeholder="예: 계정A"></label>
-        <input id="pkname" maxlength="30" placeholder="패스키 이름 (예: 내 노트북)">
+
+    <section id="guest" class="panel">
+      <h3>패스키로 들어가기</h3>
+      <p class="muted">기기(또는 보안 키)가 서명으로 본인을 확인합니다.</p>
+      <p><button id="btnLogin">패스키로 로그인</button></p>
+      <p><label>새 계정 이름 <input id="username" maxlength="20" placeholder="예: 계정A"></label>
+        <label>패스키 이름 <input id="pkname" maxlength="30" placeholder="예: 내 노트북"></label>
         <button id="btnReg" class="ghost">새 계정 만들고 패스키 등록</button></p>
     </section>
-    <div id="member" hidden>
-      <section><h2>비공개 자료 — <span id="who"></span></h2><ul id="items"></ul>
+
+    <div id="member" class="stack" hidden>
+      <section class="panel"><h3>비공개 자료 — <span id="who"></span></h3><ul id="items"></ul>
         <p class="muted" id="count"></p><button id="btnLogout" class="ghost">로그아웃</button></section>
-      <section><h2>내 패스키</h2><ul id="keys"></ul>
+      <section class="panel"><h3>내 패스키</h3><ul id="keys"></ul>
         <p><input id="pkname2" maxlength="30" placeholder="새 패스키 이름"><button id="btnAdd">패스키 추가 등록</button></p>
         <p class="muted">패스키가 하나만 남으면 삭제할 수 없습니다. 하나도 없으면 로그인할 방법이 없어지기 때문입니다.</p></section>
     </div>
   </div>
-
-  <footer>
-    © 2026 공해성 · 비공개 영역의 내용은 모두 직접 만들어 넣은 가상의 내용입니다
-  </footer>
-
 </div>
+
+<footer>
+  © 2026 공해성 · 비공개 영역의 내용은 모두 직접 만들어 넣은 가상의 내용입니다
+</footer>
+
 <script src="/lib/webauthn-browser.js"></script>
 <script>
 const $ = (id) => document.getElementById(id);
