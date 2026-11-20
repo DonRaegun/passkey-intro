@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공해성 · 소개</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  header { margin-bottom: 2.5rem; }
+  .badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+    margin-bottom: 1rem;
+  }
+  h1 { font-size: 1.9rem; margin-bottom: 0.6rem; }
+  .purpose { color: var(--muted); font-size: 1rem; }
+  section {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  h2 {
+    font-size: 1.05rem;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  ul { list-style: none; }
+  li { padding: 0.35rem 0; }
+  li::before { content: "· "; color: var(--accent); }
+  .muted { color: var(--muted); font-size: 0.9rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover, a:focus { text-decoration: underline; }
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 2rem; }
+  .divider { margin: 2.5rem 0 1.2rem; text-align: center; color: var(--muted); font-size: .85rem; }
+  .divider.private { border-top: 3px dashed #f59e0b; padding-top: 1rem; color: #f59e0b; font-weight: 700; }
+  .zone-private section { background: #2a2216; border: 1px solid #f59e0b55; }
+  .zone-private h2 { color: #f59e0b; }
+  button { font: inherit; background: var(--accent); color: #0f172a; border: 0; border-radius: 8px; padding: .45rem .9rem; cursor: pointer; margin: .2rem .3rem .2rem 0; }
+  button.ghost { background: transparent; color: var(--text); border: 1px solid var(--muted); }
+  input { font: inherit; padding: .4rem .6rem; border-radius: 8px; border: 1px solid var(--muted); background: #0f172a; color: var(--text); }
+  #msg { margin: .8rem 0; min-height: 1.4rem; color: #fbbf24; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">SKT K-뉴딜 아카데미 · ALEPH 대전 D반</span>
+    <h1>공해성</h1>
+    <p class="purpose">
+      이 페이지는 <strong>채용 담당자와 강사</strong>에게 저의 학습 여정과 기술 스택을 소개하기 위한 페이지입니다.
+    </p>
+  </header>
+
+  <section>
+    <h2>소개</h2>
+    <p>
+      500시간 과정으로 진행되는 SKT K-뉴딜 아카데미 ALEPH 대전 D반에서 개발을 배우고 있습니다.
+      매일 조금씩 성장하며, AI를 활용해 실제로 동작하는 결과물을 만드는 것을 목표로 합니다.
+    </p>
+  </section>
+
+  <section>
+    <h2>배우고 있는 것</h2>
+    <ul>
+      <li>HTML · CSS 기초와 정적 페이지 배포 (GitHub Pages)</li>
+      <li>Git / GitHub 협업 흐름 (commit, push, PR)</li>
+      <li>AI(LLM)를 활용한 코드 생성과 검증</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>공개하는 정보</h2>
+    <ul>
+      <li>이름: 공해성</li>
+      <li>소속: SKT K-뉴딜 아카데미 ALEPH 대전 D반</li>
+      <li>연락: <a href="mailto:gong92074@gmail.com">gong92074@gmail.com</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>공개하지 않는 정보</h2>
+    <ul>
+      <li>집 주소 등 상세 거주지 정보</li>
+      <li>신분증·주민등록번호 등 개인 식별 번호</li>
+      <li>비밀번호·API 키 등 비밀값</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>링크</h2>
+    <ul>
+      <li>GitHub: <a href="https://github.com/gsg920" target="_blank" rel="noopener">github.com/gsg920</a></li>
+    </ul>
+  </section>
+
+  <div class="divider">▲ 여기까지 공개 영역 — 누구나 볼 수 있습니다</div>
+  <div class="divider private">▼ 여기부터 비공개 영역 — 패스키로 로그인해야 보입니다</div>
+  <div class="zone-private">
+    <p id="msg" role="status"></p>
+    <section id="guest">
+      <h2>패스키로 들어가기</h2>
+      <p class="muted">비밀번호는 쓰지 않습니다. 기기(또는 보안 키)가 서명으로 본인을 확인합니다.</p>
+      <p style="margin-top:.6rem"><button id="btnLogin">패스키로 로그인</button></p>
+      <p style="margin-top:.6rem"><label>새 계정 이름 <input id="username" maxlength="20" placeholder="예: 계정A"></label>
+        <input id="pkname" maxlength="30" placeholder="패스키 이름 (예: 내 노트북)">
+        <button id="btnReg" class="ghost">새 계정 만들고 패스키 등록</button></p>
+    </section>
+    <div id="member" hidden>
+      <section><h2>비공개 자료 — <span id="who"></span></h2><ul id="items"></ul>
+        <p class="muted" id="count"></p><button id="btnLogout" class="ghost">로그아웃</button></section>
+      <section><h2>내 패스키</h2><ul id="keys"></ul>
+        <p><input id="pkname2" maxlength="30" placeholder="새 패스키 이름"><button id="btnAdd">패스키 추가 등록</button></p>
+        <p class="muted">패스키가 하나만 남으면 삭제할 수 없습니다. 하나도 없으면 로그인할 방법이 없어지기 때문입니다.</p></section>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 공해성 · 비공개 영역의 내용은 모두 직접 만들어 넣은 가상의 내용입니다
+  </footer>
+
+</div>
+<script src="/lib/webauthn-browser.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+const say = (t) => ($('msg').textContent = t);
+async function api(url, method = 'GET', body) {
+  const r = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: body && JSON.stringify(body) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || r.status);
+  return j;
+}
+async function refresh() {
+  try {
+    const p = await api('/api/private'); const k = await api('/api/passkeys');
+    $('guest').hidden = true; $('member').hidden = false; $('who').textContent = p.owner;
+    $('items').innerHTML = ''; p.items.forEach((t) => { const li = document.createElement('li'); li.textContent = t; $('items').append(li); });
+    $('count').textContent = '자료 ' + p.items.length + '건';
+    $('keys').innerHTML = '';
+    k.forEach((x) => { const li = document.createElement('li'); li.textContent = x.name + ' · 등록 ' + x.createdAt.slice(0, 10) + ' ';
+      const b = document.createElement('button'); b.className = 'ghost'; b.textContent = '삭제';
+      b.onclick = async () => { try { await api('/api/passkeys/' + encodeURIComponent(x.id), 'DELETE'); say('삭제했습니다'); refresh(); } catch (e) { say(e.message); } };
+      li.append(b); $('keys').append(li); });
+  } catch { $('guest').hidden = false; $('member').hidden = true; $('items').innerHTML = ''; $('keys').innerHTML = ''; }
+}
+async function register(username, name) {
+  try {
+    const optionsJSON = await api('/api/register/options', 'POST', { username });
+    const response = await SimpleWebAuthnBrowser.startRegistration({ optionsJSON });
+    await api('/api/register/verify', 'POST', { response, name: name || '이름 없는 패스키' });
+    say('패스키를 등록했습니다'); refresh();
+  } catch (e) {
+    say(e.name === 'NotAllowedError' ? '등록을 취소했습니다. 서버에는 아무것도 저장되지 않았습니다.' : '등록 실패: ' + e.message);
+  }
+}
+$('btnReg').onclick = () => register($('username').value, $('pkname').value);
+$('btnAdd').onclick = () => register(undefined, $('pkname2').value);
+$('btnLogin').onclick = async () => {
+  try {
+    const optionsJSON = await api('/api/login/options', 'POST');
+    const response = await SimpleWebAuthnBrowser.startAuthentication({ optionsJSON });
+    await api('/api/login/verify', 'POST', { response });
+    say('로그인했습니다'); refresh();
+  } catch (e) { say(e.name === 'NotAllowedError' ? '로그인을 취소했습니다.' : '로그인 실패: ' + e.message); }
+};
+$('btnLogout').onclick = async () => { await api('/api/logout', 'POST'); say('로그아웃했습니다'); refresh(); };
+refresh();
+</script>
+</body>
+</html>
