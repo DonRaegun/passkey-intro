@@ -31,7 +31,7 @@
 .public-end{background:var(--dark);color:#98a7b2;text-align:center;font-size:12px;padding:0 1rem 26px}
 /* 공개/비공개 경계: 사선 띠 + 색이 다른 영역 */
 .boundary{background:repeating-linear-gradient(-45deg,#e9b44c 0 14px,#202a33 14px 28px);padding:7px 0}.boundary p{margin:0;background:#e9b44c;color:#1c2228;text-align:center;font-weight:800;font-size:14px;padding:.8rem 1rem}
-.private-section{background:#e6ecf2;border-bottom:1px solid #cfd8e0;padding:60px 0 80px}.private-heading{display:flex;justify-content:space-between;align-items:center;gap:20px}.private-heading h2{font-size:26px;letter-spacing:-.04em;margin:6px 0}.private-heading p{color:var(--secondary);font-size:13px;margin:0}.private-pill{font-size:11px;font-weight:700;background:var(--dark);padding:7px 12px;color:#e9b44c;border-radius:3px}.private-box{max-width:760px;background:#fff;border:1px solid #cdd7de;padding:28px;margin-top:25px}.private-box h3{font-size:16px}.private-box p,.private-box label,.private-box li{font-size:13px;color:#5b656c}.private-box select{padding:10px 8px;border:1px solid #c7d0d5;border-radius:3px;margin:5px 7px 7px 0;font:inherit;font-size:13px}.private-box input{padding:10px 12px;border:1px solid #c7d0d5;background:#fff;border-radius:3px;max-width:100%;margin:5px 7px 7px 0}.private-box button{padding:10px 14px;border:0;border-radius:3px;background:var(--dark);color:#fff;font-size:12px;font-weight:600;margin:5px 7px 7px 0}.private-box button.ghost{background:#fff;color:var(--dark);border:1px solid #bdc6cc}.private-box ul{padding-left:18px}.private-box .muted{color:#7c878e}.private-box .stack>*+*{margin-top:16px}#msg{color:#345f8c;font-size:13px;min-height:1.3em}
+.private-section{background:#e6ecf2;border-bottom:1px solid #cfd8e0;padding:60px 0 80px}.private-heading{display:flex;justify-content:space-between;align-items:center;gap:20px}.private-heading h2{font-size:26px;letter-spacing:-.04em;margin:6px 0}.private-heading p{color:var(--secondary);font-size:13px;margin:0}.private-pill{font-size:11px;font-weight:700;background:var(--dark);padding:7px 12px;color:#e9b44c;border-radius:3px}.private-box{max-width:760px;background:#fff;border:1px solid #cdd7de;padding:28px;margin-top:25px}.private-box h3{font-size:16px}.private-box p,.private-box label,.private-box li{font-size:13px;color:#5b656c}.private-box select{padding:10px 8px;border:1px solid #c7d0d5;border-radius:3px;margin:5px 7px 7px 0;font:inherit;font-size:13px}.private-box input{padding:10px 12px;border:1px solid #c7d0d5;background:#fff;border-radius:3px;max-width:100%;margin:5px 7px 7px 0}.private-box button{padding:10px 14px;border:0;border-radius:3px;background:var(--dark);color:#fff;font-size:12px;font-weight:600;margin:5px 7px 7px 0}.private-box button.ghost{background:#fff;color:var(--dark);border:1px solid #bdc6cc}.private-box pre{white-space:pre-wrap;word-break:break-all;font-size:12px;background:#f1f4f6;padding:12px;border-radius:3px;color:#27323a;margin:8px 0 0}.private-box ul{padding-left:18px}.private-box .muted{color:#7c878e}.private-box .stack>*+*{margin-top:16px}#msg{color:#345f8c;font-size:13px;min-height:1.3em}
 footer{padding:28px 0;color:#7b858c;font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:15px}[hidden]{display:none!important}
 @media(max-width:900px){.hero{grid-template-columns:1fr;gap:45px;padding:80px 0}.hero-aside{display:grid;grid-template-columns:1fr 1fr;gap:15px}.about-grid{gap:35px}.project.featured,.project.featured.flip{grid-template-columns:1fr}.project.featured.flip .project-visual{order:0}.project.featured .project-body{padding:32px}.project.featured .project-visual{min-height:340px}}
 @media(max-width:650px){.container{width:min(100% - 36px,1140px)}.nav{height:64px}.nav-links{gap:14px}.nav-links a{font-size:12px}.nav-links a:nth-child(2),.nav-links a:nth-child(3){display:none}.hero{padding:70px 0}.hero-description{font-size:15px}.hero-aside{grid-template-columns:1fr;gap:0}.numbers{grid-template-columns:1fr}.numbers div{border-right:0;border-bottom:1px solid var(--line)}.section{padding:65px 0}.section-head{display:block}.section-head p{margin-top:14px}.projects{grid-template-columns:1fr}.project.featured .project-visual{min-height:300px}.project-body,.project.featured .project-body{padding:26px}.project.featured h3{font-size:25px}.about-grid,.skills,.ai{grid-template-columns:1fr;gap:22px}.limits li{grid-template-columns:1fr;gap:4px}.contact-section{padding:65px 0}.private-heading{align-items:start;flex-direction:column}.private-box{padding:20px}.footer-inner{flex-direction:column}}
@@ -152,6 +152,7 @@ footer{padding:28px 0;color:#7b858c;font-size:12px}.footer-inner{display:flex;ju
   <div id="member" class="stack" hidden>
     <section class="private-box"><h3>비공개 자료 — <span id="who"></span></h3><ul id="items"></ul><p class="muted" id="count"></p><button id="btnLogout" class="ghost">로그아웃</button></section>
     <section class="private-box"><h3>등록된 패스키</h3><ul id="keys"></ul><p><input id="pkname2" maxlength="30" placeholder="새 패스키 이름"><label>저장 위치 <select class="att"><option value="">브라우저가 묻기</option><option value="platform">이 기기 (Windows Hello·PIN)</option><option value="cross-platform">보안 키 · 휴대폰</option></select></label><button id="btnAdd">패스키 추가 등록</button></p><p class="muted">패스키가 하나만 남으면 삭제할 수 없습니다. 하나도 없으면 로그인할 방법이 없어지기 때문입니다.</p></section>
+    <section class="private-box"><h3>접근 차단 확인</h3><p>다른 계정 이름을 넣고 그 계정의 자료를 요청해 봅니다. 내 계정이 아니면 서버가 거절해야 하고, 거절 전후로 내 자료 건수는 그대로여야 합니다.</p><p><input id="other" maxlength="20" placeholder="상대 계정 이름"><button id="btnProbe">요청 보내기</button></p><pre id="probe"></pre></section>
   </div>
 </div></section>
 
@@ -202,6 +203,20 @@ $('btnLogin').onclick = async () => {
   } catch (e) { say(e.name === 'NotAllowedError' ? '로그인을 취소했습니다.' : '로그인 실패: ' + e.message); }
 };
 $('btnLogout').onclick = async () => { await api('/api/logout', 'POST'); say('로그아웃했습니다'); refresh(); };
+$('btnProbe').onclick = async () => {
+  const n = encodeURIComponent($('other').value.trim()); const out = [];
+  const count = async () => (await api('/api/private')).items.length;
+  const hit = async (u) => { const r = await fetch(u); out.push('GET ' + u + '
+  → ' + r.status + ' ' + (await r.text()).slice(0, 160)); };
+  try {
+    out.push('요청 전 내 자료 건수: ' + await count());
+    await hit('/api/users/' + n + '/private');
+    await hit('/api/private?account=' + n + '&owner=' + n);
+    out.push('요청 후 내 자료 건수: ' + await count());
+  } catch (e) { out.push('오류: ' + e.message); }
+  $('probe').textContent = out.join('
+');
+};
 refresh();
 </script>
 </body>
