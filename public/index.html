@@ -24,7 +24,7 @@
 .project-body{padding:34px 34px 30px;display:flex;flex-direction:column;flex:1}.project.featured .project-body{padding:46px 42px}.project-no{font:700 11px 'Manrope',sans-serif;letter-spacing:.14em;color:var(--blue);margin-bottom:16px}.project h3{font-size:24px;line-height:1.4;letter-spacing:-.045em;margin-bottom:13px}.project.featured h3{font-size:30px}.project p{font-size:14px;color:var(--secondary);line-height:1.85;word-break:keep-all}.project ul{margin:0 0 4px;padding-left:18px;font-size:14px;color:#46515a;line-height:1.85}
 .tags{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0 22px}.tags span{font-size:11px;font-weight:600;background:#f0f2f3;color:#53616a;padding:5px 9px}.project-links{display:flex;gap:20px;flex-wrap:wrap;margin-top:auto}.text-link{font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:5px}.project-note{font-size:11px;color:#778087;margin:8px 0 0}
 .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.case{background:var(--surface);border:1px solid var(--line);padding:30px 28px}.case .tagline{font:700 11px 'Manrope',sans-serif;letter-spacing:.14em;color:var(--blue)}.case h3{font-size:19px;line-height:1.45;letter-spacing:-.04em;margin:10px 0 18px;word-break:keep-all}.case dl{margin:0}.case dt{font-size:11px;font-weight:700;color:#818a90;margin-top:14px;letter-spacing:.08em}.case dd{margin:2px 0 0;font-size:14px;line-height:1.75;color:#3d4851;word-break:keep-all}
-.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px}.about-lead{font-size:clamp(23px,2.5vw,33px);line-height:1.55;font-weight:700;letter-spacing:-.05em;word-break:keep-all}.about-copy{color:var(--secondary);font-size:15px;line-height:2}.fact-list{border-top:1px solid var(--line);margin:0}.fact{display:grid;grid-template-columns:110px 1fr;gap:15px;padding:18px 0;border-bottom:1px solid var(--line);font-size:14px}.fact dt{color:#818a90}.fact dd{margin:0;font-weight:600}
+.grp{font-size:15px;letter-spacing:-.02em;margin:46px 0 14px;padding-bottom:10px;border-bottom:2px solid var(--ink)}.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px}.about-lead{font-size:clamp(23px,2.5vw,33px);line-height:1.55;font-weight:700;letter-spacing:-.05em;word-break:keep-all}.about-copy{color:var(--secondary);font-size:15px;line-height:2}.fact-list{border-top:1px solid var(--line);margin:0}.fact{display:grid;grid-template-columns:110px 1fr;gap:15px;padding:18px 0;border-bottom:1px solid var(--line);font-size:14px}.fact dt{color:#818a90}.fact dd{margin:0;font-weight:600}
 .ai{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.ai div{background:var(--surface);border:1px solid var(--line);padding:30px 28px}.ai h3{font-size:16px;margin-bottom:12px}.ai ul{margin:0;padding-left:18px;font-size:14px;color:var(--secondary);line-height:1.9}.ai-note{margin-top:22px;font-size:14px;color:var(--secondary);border-left:3px solid var(--blue);padding-left:16px;max-width:760px}
 .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.skill{border-top:2px solid #9ca9b3;padding-top:22px}.skill h3{font-size:16px;margin-bottom:12px}.skill p,.skill li{font-size:14px;color:var(--secondary);line-height:1.9}.skill ul{margin:0;padding-left:18px}
 .limits{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}.limits li{padding:16px 0;border-bottom:1px solid var(--line);font-size:14px;color:#3d4851;display:grid;grid-template-columns:150px 1fr;gap:18px}.limits b{color:var(--blue);font-weight:700}
@@ -94,7 +94,8 @@ footer{padding:28px 0;color:#7b858c;font-size:12px}.footer-inner{display:flex;ju
 </div></section>
 
 <section id="cases" class="section"><div class="container">
-  <div class="section-head"><div><span class="section-index">02 / Decisions</span><h2>가계부에서 내린 판단 세 가지</h2></div><p>기능을 넣는 것보다 “무엇을 일부러 하지 않았나”를 남기는 쪽에 더 신경 썼습니다. 가계부 개발 기록에서 골랐습니다.</p></div>
+  <div class="section-head"><div><span class="section-index">02 / Decisions</span><h2>만들면서 내린 판단</h2></div><p>기능을 넣는 것보다 “무엇을 일부러 하지 않았나”를 남기는 쪽에 더 신경 썼습니다. 각 프로젝트의 개발 기록과 README에서 골랐습니다.</p></div>
+  <h3 class="grp">가계부</h3>
   <div class="cases">
     <div class="case"><span class="tagline">v2.1 · 알림 읽기</span><h3>토스 알림이 안 들어왔다</h3>
       <dl><dt>문제</dt><dd>금액이 알림 제목에만 있는데, 읽기 규칙은 본문에서만 금액을 찾아 버렸다.</dd><dt>고민</dt><dd>토스 전용 규칙을 만들까, 제목과 본문을 합쳐 읽을까.</dd><dt>선택</dt><dd>합쳐서 읽기. 형식마다 규칙을 늘리는 것보다 다른 앱에도 통한다.</dd><dt>일부러 안 한 것</dt><dd>외화 결제·자동이체 알림은 읽지 않음. 잘못 넣느니 직접 입력이 낫다.</dd></dl></div>
@@ -102,6 +103,20 @@ footer{padding:28px 0;color:#7b858c;font-size:12px}.footer-inner{display:flex;ju
       <dl><dt>문제</dt><dd>정산을 뺐더니 카드 막대가 실제 카드 값보다 작게 나왔다.</dd><dt>고민</dt><dd>카드에서 빼기 / 받은 계좌에서 빼기 / 빼지 않기.</dd><dt>선택</dt><dd>빼지 않기. 이 막대는 “돈이 어떤 방식으로 나갔나”를 보는 것이고, 화면에 “정산은 빼지 않은 값”이라고 밝혀 둔다.</dd></dl></div>
     <div class="case"><span class="tagline">v2.9 ~ 2.10 · 화면</span><h3>예뻐 보이던 효과를 걷어냈다</h3>
       <dl><dt>문제</dt><dd>원 그래프를 누르면 조각이 반짝이는 효과가 지나치다는 의견을 받았다.</dd><dt>선택</dt><dd>색이 강조되는 정도만 남기고 나머지는 뺐다.</dd><dt>배운 점</dt><dd>화면 효과는 넣는 것보다 빼는 쪽이 더 어렵다. 처음엔 예뻐 보여도 의견을 받으면 대부분 걷어냈다.</dd></dl></div>
+  </div>
+  <h3 class="grp">JARVIS · 개발 중</h3>
+  <div class="cases">
+    <div class="case"><span class="tagline">설계 · 모델 사용</span><h3>규칙이 먼저, 모델은 마지막</h3>
+      <dl><dt>문제</dt><dd>3B 크기의 로컬 모델이 말에 없는 앱을 열거나 인자를 지어냈다.</dd><dt>선택</dt><dd>아는 말은 규칙이 모델 없이 처리하고, 위험하거나 인자가 중요한 도구는 규칙이 해석했을 때만 실행한다. 모델이 말에 없는 앱을 고르면 막는다.</dd><dt>결과</dt><dd>모델이 없어도 대부분의 명령이 되고, 모델은 모르는 말을 받는 예비 역할만 한다.</dd></dl></div>
+    <div class="case"><span class="tagline">카카오톡 · 방 찾기</span><h3>OCR을 버렸다</h3>
+      <dl><dt>문제</dt><dd>대화방 목록을 OCR로 읽었더니 세 글자 이름이 전혀 다른 이름으로 읽혔고, 접근성(UI Automation)으로도 목록이 읽히지 않았다.</dd><dt>선택</dt><dd>방을 연 뒤 창 제목이 이름과 정확히 같은지 확인하는 방식으로 바꿨다. 되돌릴 수 없는 전송 전에는 확인 창을 거친다.</dd></dl></div>
+    <div class="case"><span class="tagline">평가 · 숫자</span><h3>“평가 100%”가 가짜였다</h3>
+      <dl><dt>문제</dt><dd>앱 이름으로 오인된 말이 도구 이름만 비교하는 평가를 통과하고 있었다.</dd><dt>선택</dt><dd>평가 기대값을 바로잡고, 직접 쓴 문장 평가는 실제보다 후하다는 점을 한계로 적었다.</dd><dt>배운 점</dt><dd>통과했다는 숫자보다, 무엇을 통과했는지가 중요하다.</dd></dl></div>
+  </div>
+  <h3 class="grp">품질 회수 판단 시스템</h3>
+  <div class="cases">
+    <div class="case"><span class="tagline">설계 · AI의 역할</span><h3>판정은 규칙이, 설명은 AI가</h3>
+      <dl><dt>선택</dt><dd>회수 여부는 항상 규칙이 판단하고, 접수 해석·브리핑·안내문만 선택적으로 Claude가 쓴다.</dd><dt>안전장치</dt><dd>API 키는 탭 메모리에만 두고 새로고침하면 사라진다. 키가 없으면 규칙 기반 모의 응답으로 동작한다.</dd></dl></div>
   </div>
 </div></section>
 
@@ -130,6 +145,8 @@ footer{padding:28px 0;color:#7b858c;font-size:12px}.footer-inner{display:flex;ju
 <section id="limits" class="section"><div class="container">
   <div class="section-head"><div><span class="section-index">05 / Limits</span><h2>아직 못 한 것</h2></div><p>숨기지 않고 적어 둡니다. 가계부 개발 기록의 “남은 한계”에서 골랐습니다.</p></div>
   <ul class="limits">
+    <li><b>JARVIS · 화면</b><span>화면을 보지 못해서, 규칙에 없는 프로그램이나 화면 속 버튼은 조작하지 못합니다.</span></li>
+    <li><b>JARVIS · 되돌리기</b><span>작업 기록(로그)과 실행 취소가 없습니다. 평가는 직접 만든 문장 43개 기준이라 실제보다 후하게 나옵니다.</span></li>
     <li><b>가계부 · 플랫폼</b><span>아이폰에서는 결제 알림 자동 입력이 되지 않습니다 (안드로이드 앱만).</span></li>
     <li><b>가계부 · 알림 형식</b><span>외화 결제, 카드대금·자동이체 알림은 읽지 않고, 네이버페이·카카오페이·교통카드 형식은 확인하지 못했습니다.</span></li>
     <li><b>가계부 · 테스트</b><span>자동 UI 테스트가 없습니다. 화면은 브라우저와 에뮬레이터에서 직접 확인했습니다.</span></li>
