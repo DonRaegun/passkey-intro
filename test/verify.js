@@ -78,7 +78,7 @@ async function loginWith(cl, auth, credId, tamper) {
   h('0. 로그인 없이 비공개 자료 직접 요청 (T08-C16/C17)');
   const r0 = await anon.call('GET', '/api/private'); ok(r0.status === 401, '401로 거절');
   const page = await (await fetch(BASE + '/')).text();
-  ok(!/\[가상\]/.test(page) && !/프로젝트 메모/.test(page), '로그인 전 받은 페이지 소스에 비공개 내용 없음');
+  ok(!/\[가상\]/.test(page) && !/가상기업|시간대별 강수|월별 카테고리 차트/.test(page), '로그인 전 받은 페이지 소스에 비공개 내용 없음');
 
   h('1. 계정 두 개 + 패스키 등록 (C19~C21, C36)');
   const a1 = await registerAcct(A, authA, '계정A', 'A의 첫 패스키');

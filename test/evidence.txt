@@ -7,78 +7,78 @@
 
 === 1. 계정 두 개 + 패스키 등록 (C19~C21, C36) ===
   [계정A] POST /api/register/options body={"username":"계정A"}
-      -> 200 {"challenge":"L_gsqTRWe40Vuvz3PE39gqc4aimnugL8hGVLvjeuqtw","rp":{"name":"공해성 소개","id":"localhost"},"user":{"id":"NjE4OTQ0YjUtZDdkNS00Y2Q4LTkwMzUtNWNhYzJjNGM3YTQ1","name":"계정A","displayName":""},"pubKeyCredParams":[{"alg"
-  챌린지=L_gsqTRWe40V…  (요청 본문에는 공개키가 든 attestationObject만 있고 개인키 필드 없음)
-  [계정A] POST /api/register/verify body={"response":{"id":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","rawId":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","type":"public-key","c
+      -> 200 {"challenge":"1qx0FJywGOuDyXUfT8CRXPb0sN0oS2NXVh_Phd_ZrEg","rp":{"name":"공해성 소개","id":"localhost"},"user":{"id":"NmU3ZTUwYzgtZWQ2Yy00YWI2LTk1ZTQtZTg4OTQ1ZWUwMmY5","name":"계정A","displayName":""},"pubKeyCredParams":[{"alg"
+  챌린지=1qx0FJywGOuD…  (요청 본문에는 공개키가 든 attestationObject만 있고 개인키 필드 없음)
+  [계정A] POST /api/register/verify body={"response":{"id":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","rawId":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","type":"public-key","c
       -> 200 {"ok":true}
   [계정B] POST /api/register/options body={"username":"계정B"}
-      -> 200 {"challenge":"-qT9Wx0optzQFD_lLTDcFu5n6OUjHtUukko7XZvZmtY","rp":{"name":"공해성 소개","id":"localhost"},"user":{"id":"NjEyYzY1NTgtNzBlYy00MDliLWIxOTAtYzNjNDg3ZDgzM2Yz","name":"계정B","displayName":""},"pubKeyCredParams":[{"alg"
-  챌린지=-qT9Wx0optzQ…  (요청 본문에는 공개키가 든 attestationObject만 있고 개인키 필드 없음)
-  [계정B] POST /api/register/verify body={"response":{"id":"tq39oumCTBJ4Y8qXTvo_OkhAzOciRLhH_qwbm2gR1go","rawId":"tq39oumCTBJ4Y8qXTvo_OkhAzOciRLhH_qwbm2gR1go","type":"public-key","c
+      -> 200 {"challenge":"RZ7DF02v45QpwXcFV_FW5yyb0ondBCYJr3c8WVT7GOE","rp":{"name":"공해성 소개","id":"localhost"},"user":{"id":"NmQ4YTNkYzYtMzkxNy00MjBjLTgwNTgtZDJiOGNkZDg0MmQ5","name":"계정B","displayName":""},"pubKeyCredParams":[{"alg"
+  챌린지=RZ7DF02v45Qp…  (요청 본문에는 공개키가 든 attestationObject만 있고 개인키 필드 없음)
+  [계정B] POST /api/register/verify body={"response":{"id":"TU3rd72f78pF2dw0U35ot63UTOso3zxfZxz8gg3iO2c","rawId":"TU3rd72f78pF2dw0U35ot63UTOso3zxfZxz8gg3iO2c","type":"public-key","c
       -> 200 {"ok":true}
   ✔ 두 계정 등록 성공
-  ✔ 등록 챌린지가 서로 다름: L_gsqTRWe4… ≠ -qT9Wx0opt…
+  ✔ 등록 챌린지가 서로 다름: 1qx0FJywGO… ≠ RZ7DF02v45…
 
 === 2. 로그인: 성공 vs 서명 위조 실패, 챌린지 재사용 (C27~C31) ===
   [로그인없음] POST /api/login/options
-      -> 200 {"rpId":"localhost","challenge":"TyErCXm7akWYIWwIaAcyA4cNCATDkeQ4ODjBslEu0ng","timeout":60000,"userVerification":"preferred"}
-  [로그인없음] POST /api/login/verify body={"response":{"id":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","rawId":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","type":"public-key","c
+      -> 200 {"rpId":"localhost","challenge":"g6W2nYmAHpgCG2NdITTerUDWvTgpvBD6osOIGbi-1J0","timeout":60000,"userVerification":"preferred"}
+  [로그인없음] POST /api/login/verify body={"response":{"id":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","rawId":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","type":"public-key","c
       -> 200 {"ok":true}
   ✔ 정상 서명 → 200
   [위조] POST /api/login/options
-      -> 200 {"rpId":"localhost","challenge":"VHsomQwdWdau3lMZwXuknPno-3GsWO8PAzFO2QKcmrg","timeout":60000,"userVerification":"preferred"}
-  [위조] POST /api/login/verify body={"response":{"id":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","rawId":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","type":"public-key","c
+      -> 200 {"rpId":"localhost","challenge":"scAqr-Oeg9yoyRPD0EktYabg4GXyMhw2u2X0V34XnZs","timeout":60000,"userVerification":"preferred"}
+  [위조] POST /api/login/verify body={"response":{"id":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","rawId":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","type":"public-key","c
       -> 401 {"error":"서명 검증 실패: 서명 불일치"}
   ✔ 위조 서명 → 401
   ✔ 로그인 챌린지도 매번 다름
   -- 이미 사용한 챌린지로 같은 응답을 다시 제출
-  [재사용] POST /api/login/verify body={"response":{"id":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","rawId":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","type":"public-key","c
+  [재사용] POST /api/login/verify body={"response":{"id":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","rawId":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","type":"public-key","c
       -> 200 {"ok":true}
-  [재사용] POST /api/login/verify body={"response":{"id":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","rawId":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","type":"public-key","c
+  [재사용] POST /api/login/verify body={"response":{"id":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","rawId":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","type":"public-key","c
       -> 400 {"error":"챌린지가 없거나 이미 사용되었습니다"}
   ✔ 첫 제출 200, 재제출 400(거절)
 
 === 3. 취소하면 서버에 아무것도 저장되지 않음 (C25) ===
   [취소] POST /api/register/options body={"username":"취소계정"}
-      -> 200 {"challenge":"kNyVUVRgVhpJffVPCu0JVHNg3uOM9jKt9jSUR9v9r1w","rp":{"name":"공해성 소개","id":"localhost"},"user":{"id":"YTAwMTZhODctOTZjYS00YzVjLTlhYjctNmVmZDg5Nzc1YTA3","name":"취소계정","displayName":""},"pubKeyCredParams":[{"alg
+      -> 200 {"challenge":"XK-MHQkVuFMuMp6TH9X6atops-10X7mrIyiJ7dufSRc","rp":{"name":"공해성 소개","id":"localhost"},"user":{"id":"MDdkMTU4NzEtZjgyYS00OWFkLWE4NDAtYzRjYTkxOTQ2ZTY1","name":"취소계정","displayName":""},"pubKeyCredParams":[{"alg
   ✔ 같은 이름으로 다시 등록 시도 가능 = 서버에 계정이 만들어지지 않았음
 
 === 4. 두 번째 패스키 등록, 삭제, 삭제한 패스키로 로그인 (C42~C46) ===
   [계정A] POST /api/login/options
-      -> 200 {"rpId":"localhost","challenge":"hsyrP-JsAHZv81n68VsCQmgHo0kX7RcZd_aJ62ZRX-o","timeout":60000,"userVerification":"preferred"}
-  [계정A] POST /api/login/verify body={"response":{"id":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","rawId":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","type":"public-key","c
+      -> 200 {"rpId":"localhost","challenge":"q2SE4Qr6mTDo52m8RxMwsynVTL5SO9U5fjmuguv8et8","timeout":60000,"userVerification":"preferred"}
+  [계정A] POST /api/login/verify body={"response":{"id":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","rawId":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","type":"public-key","c
       -> 200 {"ok":true}
   [계정A] POST /api/register/options body={}
-      -> 200 {"challenge":"YQCTOSG4_An7pc6UP1PfdZgN5O3eZtb0qdOyjfbGBQc","rp":{"name":"공해성 소개","id":"localhost"},"user":{"id":"NjE4OTQ0YjUtZDdkNS00Y2Q4LTkwMzUtNWNhYzJjNGM3YTQ1","name":"계정A","displayName":""},"pubKeyCredParams":[{"alg"
-  [계정A] POST /api/register/verify body={"response":{"id":"vgroFcgOTz0IFK3XIIA5msYi_SJMubr2eXEAoXmANCU","rawId":"vgroFcgOTz0IFK3XIIA5msYi_SJMubr2eXEAoXmANCU","type":"public-key","c
+      -> 200 {"challenge":"IvP7VFISwv1QXDihMMH1YTCPC5tYOW1QdR9SukwTwcA","rp":{"name":"공해성 소개","id":"localhost"},"user":{"id":"NmU3ZTUwYzgtZWQ2Yy00YWI2LTk1ZTQtZTg4OTQ1ZWUwMmY5","name":"계정A","displayName":""},"pubKeyCredParams":[{"alg"
+  [계정A] POST /api/register/verify body={"response":{"id":"d9Zaoendb0Vc1ICscFwFyBoJf1nBbBErlXVW0Ilf3FQ","rawId":"d9Zaoendb0Vc1ICscFwFyBoJf1nBbBErlXVW0Ilf3FQ","type":"public-key","c
       -> 200 {"ok":true}
   [계정A] GET /api/passkeys
-      -> 200 [{"id":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","name":"A의 첫 패스키","createdAt":"2026-11-20T03:23:18.801Z"},{"id":"vgroFcgOTz0IFK3XIIA5msYi_SJMubr2eXEAoXmANCU","name":"A의 두번째 패스키","createdAt":"2026-11-20T03:23:18.826Z
+      -> 200 [{"id":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","name":"A의 첫 패스키","createdAt":"2026-11-20T05:26:10.105Z"},{"id":"d9Zaoendb0Vc1ICscFwFyBoJf1nBbBErlXVW0Ilf3FQ","name":"A의 두번째 패스키","createdAt":"2026-11-20T05:26:10.133Z
   ✔ 패스키 2개 목록: A의 첫 패스키 2026-11-20, A의 두번째 패스키 2026-11-20
-  [계정A] DELETE /api/passkeys/OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw
+  [계정A] DELETE /api/passkeys/Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4
       -> 200 {"ok":true}
   [삭제후-남은키] POST /api/login/options
-      -> 200 {"rpId":"localhost","challenge":"SPhGlU07UDlRu75MYHwq-iCICIxXjvXhy-pCCrkJZvE","timeout":60000,"userVerification":"preferred"}
-  [삭제후-남은키] POST /api/login/verify body={"response":{"id":"vgroFcgOTz0IFK3XIIA5msYi_SJMubr2eXEAoXmANCU","rawId":"vgroFcgOTz0IFK3XIIA5msYi_SJMubr2eXEAoXmANCU","type":"public-key","c
+      -> 200 {"rpId":"localhost","challenge":"NriqeUHEZ1E5rCAkaA0yqHcrudidwPDJzUeVZ-yy_p8","timeout":60000,"userVerification":"preferred"}
+  [삭제후-남은키] POST /api/login/verify body={"response":{"id":"d9Zaoendb0Vc1ICscFwFyBoJf1nBbBErlXVW0Ilf3FQ","rawId":"d9Zaoendb0Vc1ICscFwFyBoJf1nBbBErlXVW0Ilf3FQ","type":"public-key","c
       -> 200 {"ok":true}
   ✔ 남은 패스키로 로그인 200
   [삭제후-지운키] POST /api/login/options
-      -> 200 {"rpId":"localhost","challenge":"4bzTnsUeYDIdPKNoTzMO3b713zymwR2KoGBh5POqj7I","timeout":60000,"userVerification":"preferred"}
-  [삭제후-지운키] POST /api/login/verify body={"response":{"id":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","rawId":"OeZY8RLvvZGyFSiV8W1EQST04sVZfS4vmK3plshpYqw","type":"public-key","c
+      -> 200 {"rpId":"localhost","challenge":"jvoX_BJYoTahI57FeGwoDNOatgRLWrbSdJmS560zWts","timeout":60000,"userVerification":"preferred"}
+  [삭제후-지운키] POST /api/login/verify body={"response":{"id":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","rawId":"Ilp7GQoMHPiQtb25YmxqahOQDT0mr8hg4iCSD0hOef4","type":"public-key","c
       -> 401 {"error":"등록되지 않았거나 삭제된 패스키입니다"}
   ✔ 지운 패스키로 로그인 401
-  [계정A] DELETE /api/passkeys/vgroFcgOTz0IFK3XIIA5msYi_SJMubr2eXEAoXmANCU
+  [계정A] DELETE /api/passkeys/d9Zaoendb0Vc1ICscFwFyBoJf1nBbBErlXVW0Ilf3FQ
       -> 409 {"error":"마지막 패스키는 지울 수 없습니다 (지우면 로그인할 방법이 없어집니다)"}
   ✔ 마지막 하나는 삭제 거절 409
 
 === 5. 계정 간 접근 차단 (C37~C40) ===
   [계정A] POST /api/login/options
-      -> 200 {"rpId":"localhost","challenge":"TsXLEtRDufro9Ikv7JQrAwVmEC4uW2SSWVjEfYcn3og","timeout":60000,"userVerification":"preferred"}
-  [계정A] POST /api/login/verify body={"response":{"id":"vgroFcgOTz0IFK3XIIA5msYi_SJMubr2eXEAoXmANCU","rawId":"vgroFcgOTz0IFK3XIIA5msYi_SJMubr2eXEAoXmANCU","type":"public-key","c
+      -> 200 {"rpId":"localhost","challenge":"xRxDE7lBTsUlv2bujjK4R-4mR2bbOapCLYAZmBldq-U","timeout":60000,"userVerification":"preferred"}
+  [계정A] POST /api/login/verify body={"response":{"id":"d9Zaoendb0Vc1ICscFwFyBoJf1nBbBErlXVW0Ilf3FQ","rawId":"d9Zaoendb0Vc1ICscFwFyBoJf1nBbBErlXVW0Ilf3FQ","type":"public-key","c
       -> 200 {"ok":true}
   [계정B] POST /api/login/options
-      -> 200 {"rpId":"localhost","challenge":"lW95s-XJtRm0qiinjdLkHlsrWk8rqDA8WgSsBQl-iJw","timeout":60000,"userVerification":"preferred"}
-  [계정B] POST /api/login/verify body={"response":{"id":"tq39oumCTBJ4Y8qXTvo_OkhAzOciRLhH_qwbm2gR1go","rawId":"tq39oumCTBJ4Y8qXTvo_OkhAzOciRLhH_qwbm2gR1go","type":"public-key","c
+      -> 200 {"rpId":"localhost","challenge":"0jgQpN3cTpXUHGesQ3vS0rg9jV2rwXLUUjIVNl7TpJg","timeout":60000,"userVerification":"preferred"}
+  [계정B] POST /api/login/verify body={"response":{"id":"TU3rd72f78pF2dw0U35ot63UTOso3zxfZxz8gg3iO2c","rawId":"TU3rd72f78pF2dw0U35ot63UTOso3zxfZxz8gg3iO2c","type":"public-key","c
       -> 200 {"ok":true}
   거절 전: A 자료 3건, B 자료 4건 (서로 다른 내용: true)
   [계정A] GET /api/users/계정B/private

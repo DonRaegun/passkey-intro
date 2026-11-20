@@ -64,6 +64,17 @@ function requireAuth(req, res, next) { // 비공개 자료의 단일 관문
   next();
 }
 
+// 안드로이드 일부 브라우저(삼성 인터넷 등)는 출처를 android:apk-key-hash:<43자>로 보낸다. 형식이 맞는 것만 추가로 허용.
+// shortcut: 해시 값 자체는 고정 목록과 비교하지 않음, 허용할 앱을 좁히려면 ANDROID_ORIGINS 환경변수 목록으로 교체.
+function origins(req, response) {
+  const list = [origin(req)];
+  try {
+    const o = JSON.parse(Buffer.from(response.response.clientDataJSON, 'base64url').toString()).origin;
+    if (/^android:apk-key-hash:[A-Za-z0-9_-]{43}$/.test(o)) list.push(o);
+  } catch {}
+  return list;
+}
+
 const app = express();
 app.set('trust proxy', true);
 app.use(express.json());
@@ -105,7 +116,7 @@ app.post('/api/register/verify', async (req, res) => {
   if (!user) return res.status(400).json({ error: '등록 요청을 찾을 수 없습니다' });
   try {
     const v = await verifyRegistrationResponse({ response: req.body.response, expectedChallenge: c.challenge,
-      expectedOrigin: origin(req), expectedRPID: rpId(req) });
+      expectedOrigin: origins(req, req.body.response), expectedRPID: rpId(req) });
     if (!v.verified) throw new Error('검증 실패');
     const { credential } = v.registrationInfo;
     if (!db.users[user.id]) {
@@ -139,7 +150,7 @@ app.post('/api/login/verify', async (req, res) => {
   const pk = user.passkeys.find((p) => p.id === credId);
   try {
     const v = await verifyAuthenticationResponse({ response: req.body.response, expectedChallenge: c.challenge,
-      expectedOrigin: origin(req), expectedRPID: rpId(req),
+      expectedOrigin: origins(req, req.body.response), expectedRPID: rpId(req),
       credential: { id: pk.id, publicKey: Buffer.from(pk.publicKey, 'base64url'), counter: pk.counter, transports: pk.transports } });
     if (!v.verified) throw new Error('서명 불일치');
     pk.counter = v.authenticationInfo.newCounter; await save();
