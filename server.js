@@ -104,7 +104,6 @@ app.post('/api/register/options', async (req, res) => {
   const options = await generateRegistrationOptions({
     rpName: '공해성 소개', rpID: rpId(req), userName: user.name,
     userID: new TextEncoder().encode(user.id), attestationType: 'direct',
-    excludeCredentials: user.passkeys.map((p) => ({ id: p.id, transports: p.transports })),
     authenticatorSelection: { residentKey: 'preferred', userVerification: 'preferred',
       ...(['platform', 'cross-platform'].includes(req.body.attachment) && { authenticatorAttachment: req.body.attachment }) },
   });
